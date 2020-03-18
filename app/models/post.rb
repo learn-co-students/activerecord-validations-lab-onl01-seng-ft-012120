@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   def non_clickbait
     if self.title.present?
       clickbait = ["Won't Believe", "Secret", "Top [number]","Guess"]
-      if !clickbait.any?{|w| self.title.include?(w)}
+      unless clickbait.any?{|w| self.title.include?(w)}
         errors.add(:title, "Non a clickbait")
       end
     end
